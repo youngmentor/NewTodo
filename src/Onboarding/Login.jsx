@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Login.css'
 import LoginImg from './Login.png'
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
+    const navigate= useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -37,26 +39,29 @@ const Login = () => {
       </div>
       <div className='LoginRightDiv'>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+      <form onSubmit={handleSubmit} className='LoginForm'>
+        <div className='LoginInputDiv'>
+          <label>Email</label>
           <input
             type="email"
             value={email}
             onChange={handleEmailChange}
             required
+            className='LoginInput'
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className='LoginInputDiv'>
+          <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={handlePasswordChange}
             required
+            className='LoginInput'
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className='LoginBttn'>Login</button>
+        <span>Don't have an account yet? <b onClick={() => navigate("/signup")}>create accout</b></span>
       </form>
       </div>
     </div>

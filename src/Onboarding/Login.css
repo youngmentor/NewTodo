@@ -1,23 +1,125 @@
-*{
+* {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
-.LoginMain{
+
+.LoginMain {
     width: 100%;
     height: 100vh;
     background-color: white;
     display: flex;
 }
-.LoginLeftDiv{
+
+.LoginLeftDiv {
     width: 50%;
 
 }
-.LoginRightDiv{
+
+.LoginRightDiv {
     width: 50%;
-    background-color: red;
+    height: auto;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-left: 1px solid black;
 }
-.LoginImage{
+
+.LoginImage {
     width: 100%;
     height: 100%;
+}
+
+.LoginForm {
+    width: 80%;
+    height: 300px;
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+label {
+    width: 400px;
+}
+
+.LoginInput {
+    width: 400px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border: 1px solid lightgray;
+    padding: 10px;
+
+}
+
+.LoginInputDiv {
+    width: 100%;
+    /* background-color: green; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    gap: 5px;
+}
+
+.LoginBttn {
+    width: 400px;
+    margin-top: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+
+}
+
+b {
+    color: rgb(121, 178, 239);
+    cursor: pointer;
+}
+
+span {
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 426px) {
+    .LoginLeftDiv {
+        display: none;
+
+    }
+
+    .LoginRightDiv {
+        width: 100%;
+        border: none;
+        /* background-color: red; */
+    }
+
+    .LoginInput {
+        width: 300px;
+        height: 40px;
+        outline: none;
+        border: none;
+        border: 1px solid lightgray;
+        padding: 10px;
+
+    }
+
+    .LoginBttn {
+        width: 300px;
+        margin-top: 40px;
+        height: 40px;
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+
+    }
+
+    label {
+        width: 300px;
+        margin-top: 5px;
+    }
 }
