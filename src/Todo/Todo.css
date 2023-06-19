@@ -1,0 +1,96 @@
+.MainTodo {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.MainTodoWrap {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: green; */
+    flex-direction: column;
+}
+
+.TodoInput {
+    width: 90%;
+    height: 40px;
+    border: 1px solid black;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+.TodoInput_Wrap{
+    width: 90%;
+    height: 200px;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border: 1px solid black;
+    padding: 10px;
+}
+.TodoAddBttn{
+    width: 93%;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #16a3b7;
+    color: white;
+    font-size: 20px;
+   
+}
+.TodoBody{
+    width: 90%;
+    /* background-color: yellow; */
+    
+}
+.TodoBodyWrap{
+    width: 97.5%;
+    height: 40px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0px 10px 0px 10px;
+    margin-top: 10px;
+}
+.BttnEd{
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+}
+.BttnDe{
+    width: 80px;
+    height: 30px; 
+}
+.BttnCn{
+    width: 80px;
+    height: 30px; 
+    margin-right: 10px;
+}
+.TodoInputEdit{
+    width: 90%;
+    height: 20px;
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+.gdfjdfahfj{
+    width: 100%;
+    height: 40px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
