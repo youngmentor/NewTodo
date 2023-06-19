@@ -60,7 +60,7 @@ const Login = () => {
             className='LoginInput'
           />
         </div>
-        <button type="submit" className='LoginBttn'>Login</button>
+        <button type="submit" className='LoginBttn' onClick={() => navigate("/todo")}>Login</button>
         <span>Don't have an account yet? <b onClick={() => navigate("/signup")}>create accout</b></span>
       </form>
       </div>
