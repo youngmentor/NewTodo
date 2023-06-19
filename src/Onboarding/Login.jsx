@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './Login.css'
+import LoginImg from './Login.png'
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +31,11 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className='LoginMain'>
+      <div className='LoginLeftDiv'>
+         <img src={LoginImg} className='LoginImage'/>
+      </div>
+      <div className='LoginRightDiv'>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -53,6 +58,7 @@ const Login = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      </div>
     </div>
   );
 };
