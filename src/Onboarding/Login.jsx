@@ -5,11 +5,11 @@ import LoginImg from './Login.png'
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const navigate= useNavigate()
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUserNameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -18,15 +18,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("clicked")
 
     try {
-      const response = await axios.post('', {
-        email,
+      const response = await axios.post('https://todo-list-ns19.onrender.com/api/login', {
+        username,
         password,
       });
       console.log(response.data);
-      setEmail('');
+      setUsername('');
       setPassword('');
+      response.data.username === username.username ?  navigate('/todo') : null
     } catch (error) {
       console.error(error);
     }
@@ -43,9 +45,9 @@ const Login = () => {
         <div className='LoginInputDiv'>
           <label>Email</label>
           <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
+            type="text"
+            value={username}
+            onChange={handleUserNameChange}
             required
             className='LoginInput'
           />
@@ -60,7 +62,7 @@ const Login = () => {
             className='LoginInput'
           />
         </div>
-        <button type="submit" className='LoginBttn' onClick={() => navigate("/todo")}>Login</button>
+        <button type="submit" className='LoginBttn'>Login</button>
         <span>Don't have an account yet? <b onClick={() => navigate("/signup")}>create accout</b></span>
       </form>
       </div>

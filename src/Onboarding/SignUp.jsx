@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import './SignUp.css'
+import SignUpImg from './SignUpI.jpeg'
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -11,18 +12,18 @@ const Signup = () => {
     e.preventDefault();
     const user = {
       firstName,
-      lastName,
-      email,
+      // lastName,
+      // email,
       password
     };
 
     try {
-      const response = await axios.post('', user);
-      console.log('Signup successful!', response.data);
+      const response = await axios.post('https://todo-list-ns19.onrender.com/api/signup ', user);
+      console.log( response.data);
 
       setFirstName('');
-      setLastName('');
-      setEmail('');
+      // setLastName('');
+      // setEmail('');
       setPassword('');
     } catch (error) {
       console.error('Signup failed:', error.response.data);
@@ -30,47 +31,56 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSignup}>
-        <div>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Signup</button>
-      </form>
+    <div className='SignUpMain'>
+      <div className='SignUpLeft'>
+         <img src={SignUpImg} className='SignUpImage' />
+      </div>
+      <div className='SignUpRight'>
+        <h2>Signup</h2>
+        <form onSubmit={handleSignup} className='SignUpForm'>
+          <div className='SignUpInputDiv'>
+            <label>First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className='SignUpInput'
+            />
+          </div>
+          {/* <div className='SignUpInputDiv'>
+            <label>Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              className='SignUpInput'
+            />
+          </div>
+          <div className='SignUpInputDiv'>
+            <label>Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className='SignUpInput'
+            />
+          </div> */}
+          <div className='SignUpInputDiv'>
+            <label>Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className='SignUpInput'
+            />
+          </div>
+          <button type="submit" className='SignUpBttn'>Signup</button>
+        </form>
+      </div>
     </div>
   );
 };
