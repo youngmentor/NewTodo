@@ -14,7 +14,7 @@ const Signup = () => {
       const response = await axios.post('https://todo-list-ns19.onrender.com/api/signup ', {username, password});
       console.log(response)
       console.log( response.data);
-      response.status === 201 ? navigate("/login") : null 
+      response.status === 201 ? navigate("/") : null 
       setUserName('');
       setPassword('');
     } catch (error) {
