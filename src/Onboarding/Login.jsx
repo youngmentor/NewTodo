@@ -43,7 +43,7 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit} className='LoginForm'>
         <div className='LoginInputDiv'>
-          <label>Email</label>
+          <label>Username</label>
           <input
             type="text"
             value={username}

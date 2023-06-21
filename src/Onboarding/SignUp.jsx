@@ -1,35 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SignUp.css'
 import SignUpImg from './SignUpI.jpeg'
+import { useNavigate } from 'react-router-dom';
 const Signup = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+  const navigate= useNavigate()
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-
   const handleSignup = async (e) => {
-    e.preventDefault();
-    const user = {
-      firstName,
-      // lastName,
-      // email,
-      password
-    };
-
     try {
-      const response = await axios.post('https://todo-list-ns19.onrender.com/api/signup ', user);
+      console.log(username)
+      e.preventDefault();
+      const response = await axios.post('https://todo-list-ns19.onrender.com/api/signup ', {username, password});
+      console.log(response)
       console.log( response.data);
-
-      setFirstName('');
-      // setLastName('');
-      // setEmail('');
+      response.status === 201 ? navigate("/login") : null 
+      setUserName('');
       setPassword('');
     } catch (error) {
       console.error('Signup failed:', error.response.data);
     }
   };
 
+  
+  // useEffect(() => {
+
+  // }, [form])
   return (
     <div className='SignUpMain'>
       <div className='SignUpLeft'>
@@ -39,35 +35,15 @@ const Signup = () => {
         <h2>Signup</h2>
         <form onSubmit={handleSignup} className='SignUpForm'>
           <div className='SignUpInputDiv'>
-            <label>First Name</label>
+            <label>Username</label>
             <input
               type="text"
               id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
               className='SignUpInput'
             />
           </div>
-          {/* <div className='SignUpInputDiv'>
-            <label>Last Name</label>
-            <input
-              type="text"
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className='SignUpInput'
-            />
-          </div>
-          <div className='SignUpInputDiv'>
-            <label>Email</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className='SignUpInput'
-            />
-          </div> */}
           <div className='SignUpInputDiv'>
             <label>Password</label>
             <input

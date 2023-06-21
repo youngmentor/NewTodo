@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer,useRef } from 'react'
 import './Todo.css'
-
-
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 function reducer(todos, action) {
     switch (action.type) {
@@ -18,6 +18,7 @@ function reducer(todos, action) {
 
 
 const Todo = () => {
+    const {id} = useParams()
     const Inpuref = useRef()
     const [todos, setTodos] = useState([]);
     const [inputValue, setInputValue] = useState("");
@@ -34,7 +35,20 @@ const Todo = () => {
     todos.map((index) => {
         index.checkers ? completed += 1 : pending += 1
     })
-    const handleAddTodo = () => {
+    const handleAddTodo = async (e) => {
+console.log("i am clicked")
+        e.preventDefault();
+
+    try {
+        const response = await axios.post(`https://todo-list-ns19.onrender.com/api/add/${[id]}`, {
+        todos,
+        });
+        console.log(response.data);
+       setTodos('');
+      } catch (error) {
+        console.error(error);
+      }
+
         if (!inputValue) return;
         if (editingIndex !== null) {
             // If we are editing a todo, update the existing todo item
@@ -65,7 +79,7 @@ const Todo = () => {
 
 
     useEffect(() => {
-        // localStorage.setItem('state', JSON.stringify(state));
+    //  setTodos()
     }, [state,])
     return (
         <div className='MainTodo'>
