@@ -7,8 +7,12 @@ const Signup = () => {
   const navigate= useNavigate()
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+
+
   const handleSignup = async (e) => {
+
     try {
+      
       console.log(username)
       e.preventDefault();
       const response = await axios.post('https://todo-list-ns19.onrender.com/api/signup ', {username, password});

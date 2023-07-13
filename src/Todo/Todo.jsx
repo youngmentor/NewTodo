@@ -24,7 +24,7 @@ const Todo = () => {
     const [inputValue, setInputValue] = useState("");
     const [editingIndex, setEditingIndex] = useState(null);
     const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('state')) || [])
-
+const [allTodo, setAllTodo] =useState([])
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
@@ -40,7 +40,7 @@ console.log("i am clicked")
         e.preventDefault();
 
     try {
-        const response = await axios.post(`https://todo-list-ns19.onrender.com/api/add/${[id]}`, {
+        const response = await axios.post(`https://todo-list-ns19.onrender.com/api/add/${_id}`, {
         todos,
         });
         console.log(response.data);
@@ -60,9 +60,12 @@ console.log("i am clicked")
             // Otherwise, add a new todo item to the list
             setTodos([...todos, inputValue]);
         }
-        setInputValue("");
+        setInputValue('');
     };
-
+const getAllTodo =async (e)=>{
+   const res = await axios.get(`https://todo-list-ns19.onrender.com/api/user/${_id}`)
+   setAllTodo(res.data)
+}
     const handleDeleteTodo = (index) => {
         setTodos(todos.filter((_, i) => i !== index));
     };
@@ -79,8 +82,8 @@ console.log("i am clicked")
 
 
     useEffect(() => {
-    //  setTodos()
-    }, [state,])
+    getAllTodo()
+    }, [allTodo,])
     return (
         <div className='MainTodo'>
             <div className='MainTodoWrap'>
